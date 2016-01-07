@@ -174,7 +174,8 @@ namespace Aes
             {
                 for (int j = 0; j < nrofCol; j++)
                 {
-                    s.buf[i, j] = buf[i, (i + j) % 4];
+                    int z = (i + j) % 4;
+                    s.buf[i, j] = buf[i, z];
                     Console.Out.WriteLine("state[" + i + "," + j + "]=" + s.buf[i, j]);
                 }
             }
@@ -196,22 +197,46 @@ namespace Aes
 
         public State subBytesInv()
         {
-            // TODO
-            return (null);
+            State s = new State();
+
+            for (int i = 0; i < nrofRow; i++)
+            {
+                for (int j = 0; j < nrofCol; j++)
+                {
+                    s.buf[i, j] = Sbox.inverseSbox[buf[i, j]];
+                    //Console.Out.WriteLine("state[" + i + "," + j + "]=" + buf[i, j] + "--->" + s.buf[i, j]);
+                }
+            }
+            return (s);
         }
 
         public State shiftRowsInv()
         {
-            // TODO
+            State s = new State();
 
-            return (null);
+            for (int i = 0; i < nrofRow; i++)
+            {
+                for (int j = 0; j < nrofCol; j++)
+                {
+                    int z = (i - j) % 4;
+                    s.buf[i, j] = buf[i, z];
+                    Console.Out.WriteLine("state[" + i + "," + j + "]=" + s.buf[i, j]);
+                }
+            }
+            return (s);
         }
 
         public State mixColumnsInv()
         {
-            // TODO
-
-            return (null);
+            State s = new State();
+            for (int c = 0; c < nrofCol; c++)
+            {
+                s.buf[0, c] = (byte)(mul14[buf[0, c]] ^ mul11[buf[1, c]] ^ mul13[buf[2, c]] ^ mul09[buf[3, c]]);
+                s.buf[1, c] = (byte)(mul09[buf[0, c]] ^ mul14[buf[1, c]] ^ mul11[buf[2, c]] ^ mul13[buf[3, c]]);
+                s.buf[2, c] = (byte)(mul13[buf[0, c]] ^ mul09[buf[1, c]] ^ mul14[buf[2, c]] ^ mul11[buf[3, c]]);
+                s.buf[3, c] = (byte)(mul11[buf[0, c]] ^ mul13[buf[1, c]] ^ mul09[buf[2, c]] ^ mul14[buf[3, c]]);
+            }
+            return (s);
         }
 
         public State addRoundKey(Key key, int round)

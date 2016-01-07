@@ -52,5 +52,10 @@ namespace Aes
             State shiftedRows = inputState.shiftRows();
             Console.Out.WriteLine("state:\n" + inputState.ToMatrixString());
         }
+
+        public static string EncryptMessage(string input)
+        {
+            return "";
+        }
     }
 }

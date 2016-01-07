@@ -16,3 +16,12 @@ C:\Users\User\Desktop\YEAR 2\MATH\CRY\AES\CryAes\Aes\obj\Debug\Aes.csprojResolve
 C:\Users\User\Desktop\YEAR 2\MATH\CRY\AES\CryAes\Aes\obj\Debug\Aes.FormAes.resources
 C:\Users\User\Desktop\YEAR 2\MATH\CRY\AES\CryAes\Aes\obj\Debug\Aes.Properties.Resources.resources
 C:\Users\User\Desktop\YEAR 2\MATH\CRY\AES\CryAes\Aes\obj\Debug\Aes.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\YEAR 2\MATH\CRY\AES\AES-Cryptography\CryAes\Aes\bin\Debug\Aes.exe.config
+C:\Users\User\Desktop\YEAR 2\MATH\CRY\AES\AES-Cryptography\CryAes\Aes\obj\Debug\Aes.exe
+C:\Users\User\Desktop\YEAR 2\MATH\CRY\AES\AES-Cryptography\CryAes\Aes\obj\Debug\Aes.pdb
+C:\Users\User\Desktop\YEAR 2\MATH\CRY\AES\AES-Cryptography\CryAes\Aes\bin\Debug\Aes.exe
+C:\Users\User\Desktop\YEAR 2\MATH\CRY\AES\AES-Cryptography\CryAes\Aes\bin\Debug\Aes.pdb
+C:\Users\User\Desktop\YEAR 2\MATH\CRY\AES\AES-Cryptography\CryAes\Aes\obj\Debug\Aes.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\YEAR 2\MATH\CRY\AES\AES-Cryptography\CryAes\Aes\obj\Debug\Aes.FormAes.resources
+C:\Users\User\Desktop\YEAR 2\MATH\CRY\AES\AES-Cryptography\CryAes\Aes\obj\Debug\Aes.Properties.Resources.resources
+C:\Users\User\Desktop\YEAR 2\MATH\CRY\AES\AES-Cryptography\CryAes\Aes\obj\Debug\Aes.csproj.GenerateResource.Cache
