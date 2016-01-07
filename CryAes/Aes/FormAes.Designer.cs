@@ -118,7 +118,6 @@
             this.cbKeyLength.Size = new System.Drawing.Size(121, 21);
             this.cbKeyLength.TabIndex = 19;
             this.cbKeyLength.Text = "Select a key";
-            this.cbKeyLength.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // lbKey
             // 

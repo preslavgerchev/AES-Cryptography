@@ -68,16 +68,16 @@ namespace Aes
             byte[] inputKey = readHexString(tbKey.Text);
             Key key = new Key(inputKey);
             byte[] inputPlain = readAsciiString(tbPlain.Text);
-            string encryptedMsg = EncryptMessage(inputPlain, key,nrOfIterations);
+            string encryptedMsg = EncryptMessage(inputPlain, key, nrOfIterations);
             tbCipher.Text = encryptedMsg;
             tbPlain.Text = String.Empty;
         }
 
-        public static string EncryptMessage(byte[] inputPlain,Key k,int nrOfIterations)
+        public static string EncryptMessage(byte[] inputPlain, Key k, int nrOfIterations)
         {
             State inputState = new State(inputPlain);
             inputState = inputState.addRoundKey(k, 0);
-            for (int i = 1; i <nrOfIterations; i++)
+            for (int i = 1; i < nrOfIterations; i++)
             {
                 inputState = inputState.subBytes();
                 inputState = inputState.shiftRows();
@@ -91,12 +91,12 @@ namespace Aes
             return inputState.ToString();
         }
 
-        public static string DecryptMessage(byte[] inputPlain, Key k,int nrOfIterations)
+        public static string DecryptMessage(byte[] inputPlain, Key k, int nrOfIterations)
         {
             State outputState = new State(inputPlain);
             outputState = outputState.addRoundKey(k, nrOfIterations);
 
-            for (int i = nrOfIterations-1; i > 0; i--)
+            for (int i = nrOfIterations - 1; i > 0; i--)
             {
                 outputState = outputState.shiftRowsInv();
                 outputState = outputState.subBytesInv();
@@ -121,28 +121,23 @@ namespace Aes
         }
 
         private void btnDecrypt_Click(object sender, EventArgs e)
-        {   
+        {
             string msg = tbCipher.Text;
-            byte[] inputPlain = StringToByteArray(msg);
+            byte[] inputPlain = HexStringToByteArray(msg);
             byte[] inputKey = readHexString(tbKey.Text);
             Key key = new Key(inputKey);
-            string decryptededMsgHex = DecryptMessage(inputPlain, key,nrOfIterations);
+            string decryptededMsgHex = DecryptMessage(inputPlain, key, nrOfIterations);
             string plainMsg = ConvertHex(decryptededMsgHex);
             tbPlain.Text = plainMsg;
             tbCipher.Text = String.Empty;
         }
 
-        public static byte[] StringToByteArray(string hex)
+        public static byte[] HexStringToByteArray(string hex)
         {
             return Enumerable.Range(0, hex.Length)
                              .Where(x => x % 2 == 0)
                              .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
                              .ToArray();
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
         }
     }
 }
