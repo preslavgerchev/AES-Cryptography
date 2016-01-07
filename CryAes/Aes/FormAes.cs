@@ -1,20 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Aes
 {
     public partial class FormAes : Form
     {
+        private string key128 = "11223344556677889900aabbccddeeff";
+        private string key192 = "11223344556677889900aabbccddeeff1122334455667788";
+        private string key256 = "11223344556677889900aabbccddeeff11223344556677889900aabbccddeeff";
+        private int nrOfIterations = 10;
+
         public FormAes()
         {
             InitializeComponent();
+            this.cbKeyLength.SelectedIndex = 0;
+            this.cbKeyLength.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbKeyLength.SelectedIndex)
+            {
+                case 0:
+                    tbKey.Text = key128;
+                    nrOfIterations = 10;
+                    break;
+                case 1:
+                    tbKey.Text = key192;
+                    nrOfIterations = 12;
+                    break;
+                case 2:
+                    tbKey.Text = key256;
+                    nrOfIterations = 14;
+                    break;
+            }
         }
 
         private byte[] readHexString(string s)
@@ -46,16 +68,16 @@ namespace Aes
             byte[] inputKey = readHexString(tbKey.Text);
             Key key = new Key(inputKey);
             byte[] inputPlain = readAsciiString(tbPlain.Text);
-            string encryptedMsg = EncryptMessage(inputPlain, key);
+            string encryptedMsg = EncryptMessage(inputPlain, key,nrOfIterations);
             tbCipher.Text = encryptedMsg;
             tbPlain.Text = String.Empty;
         }
 
-        public static string EncryptMessage(byte[] inputPlain,Key k)
+        public static string EncryptMessage(byte[] inputPlain,Key k,int nrOfIterations)
         {
             State inputState = new State(inputPlain);
             inputState = inputState.addRoundKey(k, 0);
-            for (int i = 1; i <10; i++)
+            for (int i = 1; i <nrOfIterations; i++)
             {
                 inputState = inputState.subBytes();
                 inputState = inputState.shiftRows();
@@ -64,17 +86,17 @@ namespace Aes
             }
             inputState = inputState.subBytes();
             inputState = inputState.shiftRows();
-            inputState = inputState.addRoundKey(k, 10);
+            inputState = inputState.addRoundKey(k, nrOfIterations);
             Console.Out.WriteLine(inputState.ToMatrixString());
             return inputState.ToString();
         }
 
-        public static string DecryptMessage(byte[] inputPlain, Key k)
+        public static string DecryptMessage(byte[] inputPlain, Key k,int nrOfIterations)
         {
             State outputState = new State(inputPlain);
-            outputState = outputState.addRoundKey(k, 10);
+            outputState = outputState.addRoundKey(k, nrOfIterations);
 
-            for (int i = 9; i > 0; i--)
+            for (int i = nrOfIterations-1; i > 0; i--)
             {
                 outputState = outputState.shiftRowsInv();
                 outputState = outputState.subBytesInv();
@@ -85,8 +107,6 @@ namespace Aes
             outputState = outputState.shiftRowsInv();
             outputState = outputState.subBytesInv();
             outputState = outputState.addRoundKey(k, 0);
-            Console.Out.WriteLine("FINAL");
-            Console.Out.WriteLine(outputState.ToMatrixString());
             return outputState.ToString();
         }
 
@@ -106,7 +126,7 @@ namespace Aes
             byte[] inputPlain = StringToByteArray(msg);
             byte[] inputKey = readHexString(tbKey.Text);
             Key key = new Key(inputKey);
-            string decryptededMsgHex = DecryptMessage(inputPlain, key);
+            string decryptededMsgHex = DecryptMessage(inputPlain, key,nrOfIterations);
             string plainMsg = ConvertHex(decryptededMsgHex);
             tbPlain.Text = plainMsg;
             tbCipher.Text = String.Empty;
@@ -118,6 +138,11 @@ namespace Aes
                              .Where(x => x % 2 == 0)
                              .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
                              .ToArray();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }
