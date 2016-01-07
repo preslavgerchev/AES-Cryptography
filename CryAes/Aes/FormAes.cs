@@ -41,15 +41,16 @@ namespace Aes
             return (b);
         }
 
-        private void btnTest_Click(object sender, EventArgs e)
+        private void btnEncrypt_Click(object sender, EventArgs e)
         {
             byte[] inputKey = readHexString(tbKey.Text);
             Key key = new Key(inputKey);
-
             byte[] inputPlain = readAsciiString(tbPlain.Text);
             string encryptedMsg = EncryptMessage(inputPlain, key);
-            textBox1.Text = encryptedMsg;
+            tbCipher.Text = encryptedMsg;
+            tbPlain.Text = String.Empty;
         }
+
         public static string EncryptMessage(byte[] inputPlain,Key k)
         {
             State inputState = new State(inputPlain);
@@ -98,16 +99,19 @@ namespace Aes
             }
             return sb.ToString();
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string msg = textBox1.Text;
+
+        private void btnDecrypt_Click(object sender, EventArgs e)
+        {   
+            string msg = tbCipher.Text;
             byte[] inputPlain = StringToByteArray(msg);
             byte[] inputKey = readHexString(tbKey.Text);
             Key key = new Key(inputKey);
-            string decryptedMsg = DecryptMessage(inputPlain, key);
-            string da = ConvertHex(decryptedMsg);
-            textBox2.Text = da;
+            string decryptededMsgHex = DecryptMessage(inputPlain, key);
+            string plainMsg = ConvertHex(decryptededMsgHex);
+            tbPlain.Text = plainMsg;
+            tbCipher.Text = String.Empty;
         }
+
         public static byte[] StringToByteArray(string hex)
         {
             return Enumerable.Range(0, hex.Length)

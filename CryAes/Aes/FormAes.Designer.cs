@@ -32,10 +32,10 @@
             this.tbKey = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnTest = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnEncrypt = new System.Windows.Forms.Button();
+            this.tbCipher = new System.Windows.Forms.TextBox();
+            this.btnDecrypt = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tbPlain
@@ -74,53 +74,56 @@
             this.label4.Text = "plain";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnTest
+            // btnEncrypt
             // 
-            this.btnTest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnTest.Location = new System.Drawing.Point(152, 97);
-            this.btnTest.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(103, 42);
-            this.btnTest.TabIndex = 14;
-            this.btnTest.Text = "test";
-            this.btnTest.UseVisualStyleBackColor = false;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            this.btnEncrypt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnEncrypt.Location = new System.Drawing.Point(51, 142);
+            this.btnEncrypt.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEncrypt.Name = "btnEncrypt";
+            this.btnEncrypt.Size = new System.Drawing.Size(103, 42);
+            this.btnEncrypt.TabIndex = 14;
+            this.btnEncrypt.Text = "Encrypt";
+            this.btnEncrypt.UseVisualStyleBackColor = false;
+            this.btnEncrypt.Click += new System.EventHandler(this.btnEncrypt_Click);
             // 
-            // textBox1
+            // tbCipher
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 180);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(443, 20);
-            this.textBox1.TabIndex = 15;
+            this.tbCipher.Location = new System.Drawing.Point(51, 102);
+            this.tbCipher.Name = "tbCipher";
+            this.tbCipher.Size = new System.Drawing.Size(386, 20);
+            this.tbCipher.TabIndex = 15;
             // 
-            // textBox2
+            // btnDecrypt
             // 
-            this.textBox2.Location = new System.Drawing.Point(13, 245);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(443, 20);
-            this.textBox2.TabIndex = 16;
+            this.btnDecrypt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnDecrypt.Location = new System.Drawing.Point(334, 142);
+            this.btnDecrypt.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDecrypt.Name = "btnDecrypt";
+            this.btnDecrypt.Size = new System.Drawing.Size(103, 42);
+            this.btnDecrypt.TabIndex = 17;
+            this.btnDecrypt.Text = "Decrypt";
+            this.btnDecrypt.UseVisualStyleBackColor = false;
+            this.btnDecrypt.Click += new System.EventHandler(this.btnDecrypt_Click);
             // 
-            // button1
+            // label2
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button1.Location = new System.Drawing.Point(334, 97);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 42);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "test";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 105);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "cipher";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // FormAes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(556, 328);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.btnTest);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnDecrypt);
+            this.Controls.Add(this.tbCipher);
+            this.Controls.Add(this.btnEncrypt);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbKey);
@@ -138,10 +141,10 @@
         private System.Windows.Forms.TextBox tbKey;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnTest;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnEncrypt;
+        private System.Windows.Forms.TextBox tbCipher;
+        private System.Windows.Forms.Button btnDecrypt;
+        private System.Windows.Forms.Label label2;
     }
 }
 
