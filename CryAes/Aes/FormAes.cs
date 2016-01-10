@@ -122,12 +122,6 @@ namespace Aes
 
         private void btnDecrypt_Click(object sender, EventArgs e)
         {
-            string testMsg = "12345689abcdefgh";
-            byte[] test = readAsciiString(testMsg);
-            State s = new State(test);
-            s = s.subBytesInv();
-            Console.Out.WriteLine("TEST STATE");
-            Console.Out.WriteLine(s.ToMatrixString());
             string msg = tbCipher.Text;
             byte[] inputPlain = HexStringToByteArray(msg);
             byte[] inputKey = readHexString(tbKey.Text);
